@@ -1,30 +1,32 @@
 package src.main.java;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
+import java.util.Map;
 
 public class Logger implements EventListener {
-    private final String logFile = "game_event_log.csv";
+    private WriteStrategy writeStrategy;
 
-    public Logger() {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(logFile))) {
-            pw.println(
-                    "Case_ID,Player_ID,Activity,Timestamp,Category,Question_Value,Answer_Given,Result,Score_After_Play");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public Logger(WriteStrategy writeStrategy) {
+        this.writeStrategy = writeStrategy;
     }
 
     @Override
-    public void update(String eventType, String details) {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(logFile, true))) {
-            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-            pw.printf("%s,N/A,%s,%s,%s%n", UUID.randomUUID(), eventType, timestamp, details);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void update(String eventType, Object details) {
+        if ("turnStarted".equals(eventType) && details instanceof Map) {
+            var map = (Map<?, ?>) details;
+            System.out.println("Event: turnStarted | Player: " + map.get("player"));
+        } else if ("questionAnswered".equals(eventType) && details instanceof Turn) {
+            Turn t = (Turn) details;
+            String ts = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            System.out.printf("Event Logged: Player=%s, Question=%s, Answer=%s, Correct=%b, Score=%d (at %s)%n",
+                    t.playerName, t.questionText, t.answerGiven, t.correct, t.scoreAfterTurn, ts);
+        } else if ("gameEnded".equals(eventType) && details instanceof Game) {
+            Game g = (Game) details;
+            System.out.println("Event: gameEnded — writing final report using strategy.");
+            // choose a file name
+            // instead
+            writeStrategy.write(g, "game_report.csv");
         }
     }
 }

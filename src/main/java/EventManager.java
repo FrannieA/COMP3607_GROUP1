@@ -1,31 +1,28 @@
 package src.main.java;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class EventManager {
-    private List<EventListener> listeners = new ArrayList<>();
+    private Map<String, List<EventListener>> listeners = new HashMap<>();
 
-    public void subscribe(EventListener listener) {
-        listeners.add(listener);
+    public void subscribe(String eventType, EventListener listener) {
+        listeners.putIfAbsent(eventType, new ArrayList<>());
+        listeners.get(eventType).add(listener);
     }
 
-    public void unsubscribe(EventListener listener) {
-        listeners.remove(listener);
-    }
-
-    public void notify(String eventType, String details) {
-        for (EventListener l : listeners) {
-            l.update(eventType, details);
+    public void unsubscribe(String eventType, EventListener listener) {
+        List<EventListener> users = listeners.get(eventType);
+        if (users != null) {
+            users.remove(listener);
         }
     }
 
-    public EventManager getEventManager() {
-        return this;
-    }
-
-    public void subscribe(String eventType, EventListener listener) {
-        // In this simple implementation, we ignore eventType filtering
-        listeners.add(listener);
+    public void notify(String eventType, Object data) {
+        List<EventListener> users = listeners.get(eventType);
+        if (users != null) {
+            for (EventListener listener : users) {
+                listener.update(eventType, data);
+            }
+        }
     }
 }

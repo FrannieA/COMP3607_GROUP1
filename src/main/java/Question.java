@@ -96,7 +96,6 @@ public class Question {
     private String correctAnswer;
     private boolean answered = false;
 
-    // ✅ Constructor used by CSV/JSON/XML readers
     public Question(int value, String text, String[] options, String correctAnswer) {
         this.value = value;
         this.text = text;
@@ -104,7 +103,6 @@ public class Question {
         this.correctAnswer = correctAnswer.trim().toUpperCase();
     }
 
-    // ✅ Full constructor with category support
     public Question(String category, int value, String text,
             String optionA, String optionB, String optionC, String optionD, char correctAnswer) {
         this.category = category;
