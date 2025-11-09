@@ -1,8 +1,55 @@
 package src.main.java;
 
+import org.apache.poi.xwpf.usermodel.*;
+import java.io.FileOutputStream;
+import java.util.List;
+
 public class DOCXWriteStrategy implements WriteStrategy {
+
     @Override
     public void write(Game game, String filePath) {
-    }
+        List<Turn> log = game.getGameplayLog();
 
+        try (XWPFDocument document = new XWPFDocument()) {
+            XWPFParagraph title = document.createParagraph();
+            title.setAlignment(ParagraphAlignment.CENTER);
+            XWPFRun titleRun = title.createRun();
+            titleRun.setText("Game Log");
+            titleRun.setBold(true);
+            titleRun.setFontSize(18);
+
+            for (int i = 0; i < log.size(); i++) {
+                Turn t = log.get(i);
+
+                XWPFParagraph p = document.createParagraph();
+                XWPFRun run = p.createRun();
+                run.setText("Turn: " + (i + 1));
+                run.addBreak();
+                run.setText("Player: " + t.playerName);
+                run.addBreak();
+                run.setText("Category: " + t.category);
+                run.addBreak();
+                run.setText("Question: " + t.questionText);
+                run.addBreak();
+                run.setText("Answer Given: " + t.answerGiven);
+                run.addBreak();
+                run.setText("Result: " + (t.correct ? "Correct" : "Incorrect"));
+                run.addBreak();
+                run.setText("Points: " + t.points);
+                run.addBreak();
+                run.setText("Score After Turn: " + t.scoreAfterTurn);
+                run.addBreak();
+                run.addBreak();
+            }
+
+            try (FileOutputStream out = new FileOutputStream(filePath)) {
+                document.write(out);
+            }
+
+            System.out.println("Game data successfully written to DOCX file: " + filePath);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

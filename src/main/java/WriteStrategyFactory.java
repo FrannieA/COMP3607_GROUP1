@@ -9,6 +9,8 @@ public class WriteStrategyFactory {
                 return new PDFWriteStrategy();
             case "txt":
                 return new TXTWriteStrategy();
+            case "docx":
+                return new DOCXWriteStrategy();
             default:
                 throw new IllegalArgumentException("Unknown write strategy: " + type);
         }
