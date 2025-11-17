@@ -1,4 +1,3 @@
-package src.main.java;
 
 public class Player {
     private String name;
@@ -21,7 +20,7 @@ public class Player {
         this.score += points;
     }
 
-    public void subtractScore(int points) {
-        this.score -= points;
-    }
+    // public void subtractScore(int points) {
+    // this.score -= points;
+    // }
 }

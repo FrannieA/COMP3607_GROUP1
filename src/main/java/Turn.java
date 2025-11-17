@@ -1,4 +1,3 @@
-package src.main.java;
 
 public class Turn {
     public String playerName;

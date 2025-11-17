@@ -1,5 +1,3 @@
-package src.main.java;
-
 import java.util.*;
 
 public class Game {
@@ -45,6 +43,9 @@ public class Game {
     }
 
     public void play() {
+        if (players.size() < 1 || players.size() > 4) {
+            throw new IllegalStateException("Game only supports 1 and 4 players.");
+        }
         Scanner sc = new Scanner(System.in);
         int turn = 0;
         System.out.println("Welcome to the Quiz Game!");
@@ -126,7 +127,7 @@ public class Game {
                 player.addScore(q.getValue());
             } else {
                 System.out.println("Incorrect! The correct answer was: " + q.getCorrectAnswer());
-                player.subtractScore(q.getValue());
+                // player.subtractScore(q.getValue());
             }
 
             // log the turn and notify observers about questionAnswered

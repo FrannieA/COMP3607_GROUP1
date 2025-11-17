@@ -1,3 +1,0 @@
-Turn,Player,Category,Question,AnswerGiven,Correct,Points,ScoreAfterTurn
-1,Alice,Variables & Data Types,Which operator is used to get the remainder?,b,Correct,500,500
-2,Bob,Variables & Data Types,Which of the following declares an integer variable in C++?,1,Correct,100,100

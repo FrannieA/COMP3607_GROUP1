@@ -86,8 +86,6 @@
 //     }
 // }
 
-package src.main.java;
-
 public class Question {
     private String category;
     private int value;

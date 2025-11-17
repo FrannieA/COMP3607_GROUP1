@@ -1,4 +1,3 @@
-package src.main.java;
 
 public class WriteStrategyFactory {
     public static WriteStrategy getStrategy(String type) {
@@ -12,8 +11,7 @@ public class WriteStrategyFactory {
             case "docx":
                 return new DOCXWriteStrategy();
             default:
-                throw new IllegalArgumentException("Unknown write strategy: " + type);
+                return new CSVWriteStrategy();
         }
     }
 }
-

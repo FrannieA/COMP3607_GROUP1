@@ -1,4 +1,3 @@
-package src.main.java;
 
 // Category.java
 import java.util.ArrayList;

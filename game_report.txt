@@ -1,0 +1,38 @@
+=== Game Log ===
+
+Turn: 1
+Player: Alice
+Category: Variables & Data Types
+Question: Which of the following declares an integer variable in C++?
+Answer Given: 1
+Result: Correct
+Points: 100
+Score After Turn: 100
+----------------------------------------
+Turn: 2
+Player: Bob
+Category: Variables & Data Types
+Question: Which data type is used to store a single character?
+Answer Given: 1
+Result: Incorrect
+Points: 200
+Score After Turn: 0
+----------------------------------------
+Turn: 3
+Player: Alice
+Category: Variables & Data Types
+Question: What is the value of x after int x = 5/2;?
+Answer Given: 1
+Result: Correct
+Points: 300
+Score After Turn: 400
+----------------------------------------
+Turn: 4
+Player: Bob
+Category: Variables & Data Types
+Question: Which of the following is a floating-point literal?
+Answer Given: 1
+Result: Incorrect
+Points: 400
+Score After Turn: 0
+----------------------------------------

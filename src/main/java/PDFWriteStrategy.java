@@ -1,4 +1,3 @@
-package src.main.java;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;

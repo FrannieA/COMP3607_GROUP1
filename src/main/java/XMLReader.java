@@ -1,4 +1,3 @@
-package src.main.java;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -11,7 +10,7 @@ public class XMLReader implements Reader {
         XmlMapper xmlMapper = new XmlMapper();
         JsonNode root = xmlMapper.readTree(new File(filePath));
 
-        for(JsonNode item : root.withArray("QuestionItem")){
+        for (JsonNode item : root.withArray("QuestionItem")) {
             String category = item.path("Category").asText();
             int value = item.path("Value").asInt();
             String text = item.path("QuestionText").asText();
@@ -24,7 +23,8 @@ public class XMLReader implements Reader {
 
             String correctAnswer = item.path("CorrectAnswer").asText().trim();
 
-            Question q = new Question(category, value, text, optionA, optionB, optionC, optionD, correctAnswer.charAt(0));
+            Question q = new Question(category, value, text, optionA, optionB, optionC, optionD,
+                    correctAnswer.charAt(0));
             bank.addQuestion(q);
         }
 
