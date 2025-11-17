@@ -1,47 +1,91 @@
 import java.util.*;
 
+/**
+ * @author Shania Siew
+ * Represents a quiz game with players, questions, and an event management system.
+ * <p>
+ * This class manages the core gameplay loop, player turns, question selection,
+ * answer validation, score tracking, and event notifications using the observer pattern.
+ * </p>
+ */
 public class Game {
     private List<Player> players = new ArrayList<>();
     private QuestionBank questionBank;
     private List<Turn> gameplayLog = new ArrayList<>();
     private EventManager eventManager; // observer pattern
 
+    /**
+     * Returns the gameplay log containing all turns played in the game.
+     * @return a list of {@link Turn} objects representing the gameplay log
+     */
     public List<Turn> getGameplayLog() {
         return gameplayLog;
     }
 
+    /**
+     * Constructs a new Game instance with no players and an empty question bank.
+     */
     public Game() {
         this.players = new ArrayList<>();
         this.questionBank = new QuestionBank();
     }
 
+    /**
+     * Constructs a new Game instance with the specified players and question bank.
+     * @param players the list of players in the game
+     * @param questionBank the question bank containing questions for the game
+     */
     public Game(List<Player> players, QuestionBank questionBank) {
         this.players = players;
         this.questionBank = questionBank;
     }
 
+    /**
+     * Sets the event manager for this game to handle event notifications.
+     * @param eventManager the {@link EventManager} to use for event handling
+     */
     public void setEventManager(EventManager eventManager) {
         this.eventManager = eventManager;
     }
 
+    /**
+     * Adds a player to the game.
+     * @param p the player to add
+     */
     public void addPlayer(Player p) {
         players.add(p);
     }
 
+    /**
+     * Returns the list of players in the game.
+     * @return a list of {@link Player} objects representing the players in the game
+     */
     public List<Player> getPlayers() {
         return players;
     }
 
+    /**
+     * Returns the question bank used in the game.
+     * @return the {@link QuestionBank} containing the game's questions
+     */
     public QuestionBank getQuestionBank() {
         return questionBank;
     }
 
+    /**
+     * Notifies the event manager about an event with the specified type and data.
+     * @param eventType the type of the event
+     * @param data the data associated with the event
+     */
     private void notifyEvent(String eventType, Object data) {
         if (eventManager != null) {
             eventManager.notify(eventType, data);
         }
     }
 
+    /**
+     * Starts the game's main gameplay loop.
+     */
     public void play() {
         if (players.size() < 1 || players.size() > 4) {
             throw new IllegalStateException("Game only supports 1 and 4 players.");

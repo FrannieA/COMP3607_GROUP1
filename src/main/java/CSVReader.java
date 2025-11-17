@@ -1,8 +1,32 @@
-
 import java.io.*;
 import java.util.*;
 
+/**
+ * @author Shania Siew
+ * A CSV-based implementation of the {@link Reader} interface.
+ * <p>
+ * This class reads question data from a CSV file, parses each line, and
+ * constructs a {@link QuestionBank} containing all loaded {@link Question}
+ * objects. It supports CSV fields that may contain commas inside quotes.
+ * </p>
+ */
 public class CSVReader implements Reader {
+
+    /**
+     * Reads a CSV file containing question data and returns a populated
+     * {@link QuestionBank}.
+     * <p>
+     * The CSV file is expected to have the following structure:
+     * <pre>
+     * Category, Value, QuestionText, OptionA, OptionB, OptionC, OptionD, CorrectAnswer
+     * </pre>
+     * The first line (header) is automatically skipped.
+     * </p>
+     *
+     * @param filePath the path to the CSV file to read
+     * @return a {@link QuestionBank} filled with all questions from the file
+     * @throws Exception if the file cannot be read or if parsing fails
+     */
     @Override
     public QuestionBank read(String filePath) throws Exception {
         QuestionBank bank = new QuestionBank();

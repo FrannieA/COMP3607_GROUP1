@@ -1,4 +1,7 @@
-
+/**
+ * @author Shania Siew
+ * Class representing a single turn in the game.
+ */
 public class Turn {
     public String playerName;
     public String category;
@@ -8,6 +11,16 @@ public class Turn {
     public int points;
     public int scoreAfterTurn;
 
+    /**
+     * Constructs a Turn with the given parameters.
+     * @param playerName the name of the player
+     * @param category the category of the question
+     * @param questionText the text of the question
+     * @param answerGiven the answer given by the player
+     * @param correct whether the answer was correct
+     * @param points the points awarded for the turn
+     * @param scoreAfterTurn the player's score after the turn
+     */
     public Turn(String playerName, String category, String questionText, String answerGiven,
             boolean correct, int points, int scoreAfterTurn) {
         this.playerName = playerName;

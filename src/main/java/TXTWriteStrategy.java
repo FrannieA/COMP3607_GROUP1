@@ -3,8 +3,31 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.List;
 
+/**
+ * @author Franchesca Ammon
+ * A TXT-based implementation of the {@link WriteStrategy} interface.
+ * <p>
+ * This class writes the gameplay log of a {@link Game} instance and outputs each {@link Turn} to a TXT
+ * file in a human-readable format, including details such as player actions, question
+ * categories, answers given, and scores after each turn.
+ * </p>
+ */
 public class TXTWriteStrategy implements WriteStrategy {
 
+    /**
+     * Writes gameplay data from the provided {@link Game} to a TXT file at the
+     * specified path.
+     * <p>
+     * The TXT file includes the following columns:
+     * <pre>
+     * Turn, Player, Category, Question, Answer Given, Result, Points, Score After Turn
+     * </pre>
+     * Each gameplay event (each {@link Turn}) is written as a single row.
+     * </p>
+     * 
+     * @param game     the game whose log data is to be exported
+     * @param filePath the output TXT file path
+     */
     @Override
     public void write(Game game, String filePath) {
         List<Turn> log = game.getGameplayLog();

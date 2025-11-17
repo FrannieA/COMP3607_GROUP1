@@ -1,11 +1,29 @@
-//package src.main.java;
-
 import org.apache.poi.xwpf.usermodel.*;
 import java.io.FileOutputStream;
 import java.util.List;
 
+/**
+ * @author Franchesca Ammon
+ * A DOCX-based implementation of the {@link WriteStrategy} interface.
+ * <p>
+ * This class writes the gameplay log of a {@link Game} instance and outputs each {@link Turn} to a DOCX
+ * file, including details such as player actions, timestamps, question
+ * categories, answers given, and scores after each turn.
+ * </p>
+ */
 public class DOCXWriteStrategy implements WriteStrategy {
 
+    /**
+     * Writes gameplay data from the provided {@link Game} to a DOCX file at the
+     * specified path.
+     * <p>
+     * Each gameplay event (each {@link Turn}) is written as a formatted
+     * section in the document.
+     * </p>
+     *
+     * @param game     the game whose log data is to be exported
+     * @param filePath the output DOCX file path
+     */
     @Override
     public void write(Game game, String filePath) {
         List<Turn> log = game.getGameplayLog();

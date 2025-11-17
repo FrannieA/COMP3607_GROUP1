@@ -8,8 +8,28 @@ import com.lowagie.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import java.util.List;
 
+/**
+ * @author Franchesca Ammon
+ * A PDF-based implementation of the {@link WriteStrategy} interface.
+ * <p>
+ * This class writes the gameplay log of a {@link Game} instance and outputs each {@link Turn} to a PDF
+ * file, including details such as player actions, timestamps, question
+ * categories, answers given, and scores after each turn.
+ * </p>
+ */
 public class PDFWriteStrategy implements WriteStrategy {
 
+    /**
+     * Writes gameplay data from the provided {@link Game} to a PDF file at the
+     * specified path.
+     * <p>
+     * Each gameplay event (each {@link Turn}) is written as a formatted
+     * section in the document.
+     * </p>
+     *
+     * @param game     the game whose log data is to be exported
+     * @param filePath the output PDF file path
+     */
     @Override
     public void write(Game game, String filePath) {
         List<Turn> log = game.getGameplayLog();
