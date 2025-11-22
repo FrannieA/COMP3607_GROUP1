@@ -1,12 +1,18 @@
 import java.util.*;
 
+//mport org.apache.poi.ss.formula.PlainCellCache.Loc;
+import java.time.LocalDateTime;
+
 /**
  * @author Shania Siew
- * Represents a quiz game with players, questions, and an event management system.
- * <p>
- * This class manages the core gameplay loop, player turns, question selection,
- * answer validation, score tracking, and event notifications using the observer pattern.
- * </p>
+ *         Represents a quiz game with players, questions, and an event
+ *         management system.
+ *         <p>
+ *         This class manages the core gameplay loop, player turns, question
+ *         selection,
+ *         answer validation, score tracking, and event notifications using the
+ *         observer pattern.
+ *         </p>
  */
 public class Game {
     private List<Player> players = new ArrayList<>();
@@ -16,6 +22,7 @@ public class Game {
 
     /**
      * Returns the gameplay log containing all turns played in the game.
+     * 
      * @return a list of {@link Turn} objects representing the gameplay log
      */
     public List<Turn> getGameplayLog() {
@@ -32,7 +39,8 @@ public class Game {
 
     /**
      * Constructs a new Game instance with the specified players and question bank.
-     * @param players the list of players in the game
+     * 
+     * @param players      the list of players in the game
      * @param questionBank the question bank containing questions for the game
      */
     public Game(List<Player> players, QuestionBank questionBank) {
@@ -42,6 +50,7 @@ public class Game {
 
     /**
      * Sets the event manager for this game to handle event notifications.
+     * 
      * @param eventManager the {@link EventManager} to use for event handling
      */
     public void setEventManager(EventManager eventManager) {
@@ -50,6 +59,7 @@ public class Game {
 
     /**
      * Adds a player to the game.
+     * 
      * @param p the player to add
      */
     public void addPlayer(Player p) {
@@ -58,6 +68,7 @@ public class Game {
 
     /**
      * Returns the list of players in the game.
+     * 
      * @return a list of {@link Player} objects representing the players in the game
      */
     public List<Player> getPlayers() {
@@ -66,6 +77,7 @@ public class Game {
 
     /**
      * Returns the question bank used in the game.
+     * 
      * @return the {@link QuestionBank} containing the game's questions
      */
     public QuestionBank getQuestionBank() {
@@ -74,8 +86,9 @@ public class Game {
 
     /**
      * Notifies the event manager about an event with the specified type and data.
+     * 
      * @param eventType the type of the event
-     * @param data the data associated with the event
+     * @param data      the data associated with the event
      */
     private void notifyEvent(String eventType, Object data) {
         if (eventManager != null) {
@@ -182,7 +195,8 @@ public class Game {
                     ans,
                     correct,
                     q.getValue(),
-                    player.getScore());
+                    player.getScore(),
+                    LocalDateTime.now());
             gameplayLog.add(turnRecord);
 
             notifyEvent("questionAnswered", turnRecord);

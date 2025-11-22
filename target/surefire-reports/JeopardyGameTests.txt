@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: JeopardyGameTests
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.487 s -- in JeopardyGameTests
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.264 s -- in JeopardyGameTests

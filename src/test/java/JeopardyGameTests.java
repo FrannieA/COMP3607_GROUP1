@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.*;
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -75,7 +76,7 @@ public class JeopardyGameTests {
         Game game = new Game();
         game.addPlayer(new Player("Alice"));
         game.getGameplayLog().add(
-                new Turn("Alice", "Math", "1+1?", "B", true, 100, 100));
+                new Turn("Alice", "Math", "1+1?", "B", true, 100, 100, LocalDateTime.now()));
         logger.update("gameEnded", game);
         File logFile = new File("game_event_log.csv");
         assertTrue(logFile.exists());

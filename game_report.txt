@@ -11,28 +11,19 @@ Score After Turn: 100
 ----------------------------------------
 Turn: 2
 Player: Bob
-Category: Variables & Data Types
-Question: Which data type is used to store a single character?
-Answer Given: 1
+Category: File Handling
+Question: What happens if a file fails to open?
+Answer Given: b
 Result: Incorrect
-Points: 200
+Points: 500
 Score After Turn: 0
 ----------------------------------------
 Turn: 3
 Player: Alice
-Category: Variables & Data Types
-Question: What is the value of x after int x = 5/2;?
-Answer Given: 1
+Category: Arrays
+Question: What is the index of the first element in a C++ array?
+Answer Given: b
 Result: Correct
-Points: 300
-Score After Turn: 400
-----------------------------------------
-Turn: 4
-Player: Bob
-Category: Variables & Data Types
-Question: Which of the following is a floating-point literal?
-Answer Given: 1
-Result: Incorrect
-Points: 400
-Score After Turn: 0
+Points: 200
+Score After Turn: 300
 ----------------------------------------
